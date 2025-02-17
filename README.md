@@ -19,6 +19,7 @@ Run the web app using the following command from your cli/cmd/terminal window.
 
 ## Usage
 You can set the latitude, climate zone for the region you want to generate the weather for using the drop down boxes. For easier referencing, you can look-up the corresponding values from the map above.
+
 Then you can specify the date and the number of days to generate the weather for. The resulting weather information is formatted in simple markdown style.
 
 ![Screenshot of the Weather Generator](screenshot.jpg)
