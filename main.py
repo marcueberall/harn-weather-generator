@@ -304,6 +304,9 @@ subjective_temperature_values = [
 def get_subjective_temperature(temperature, units):
 	return f'{subjective_temperature[temperature]} at {subjective_temperature_values[units][temperature]}'
 
+def get_weather_hazard(temperature):
+	return subjective_temperature[temperature] in {"Sweltering", "Hot", "Freezing"}
+
 climate_zone = {
 	0: "Subpolar",
 	1: "Cool Temperate",
@@ -472,14 +475,15 @@ def on_click_generate():
 		index = get_weather_index_start(climate_zone_input.value, season)
 		moon = get_moon_phase(day_input.value)
 
-		markdown_content += f'**{day_input.value} {month_name[month_input.value]} TR {year_input.value} - {get_dawn_string(latitude_input.value, season)}, Day: {get_day_string(latitude_input.value, season)}, {get_dusk_string(latitude_input.value, season)}, {get_night_string(latitude_input.value, season)}, Moon: {get_moon_phase_string(day_input.value)}**<br>'
+		markdown_content += f'**{day_input.value} {month_name[month_input.value]} TR {year_input.value} - {get_dawn_string(latitude_input.value, season)}, {get_day_string(latitude_input.value, season)}, {get_dusk_string(latitude_input.value, season)}, {get_night_string(latitude_input.value, season)}, Moon: {get_moon_phase_string(day_input.value)}**<br>'
 
 		for watch in range(0, 6, 1):
 			daylight = is_day(latitude_input.value, season, watch * 4)
 			weather, index = get_weather_per_watch(watch, climate_zone_input.value, season, latitude_input.value, index)
 			is_foggy = True if weather.cloud_precipitation == 8 else False
+			hazard = " ⚠" if get_weather_hazard(weather.subjective_temperature[daylight]) else ""
 
-			markdown_content += f'- *{get_watch_times(watch)}:* {get_subjective_temperature(weather.subjective_temperature[daylight], units_input.value)}, {cloud_precipitation[weather.cloud_precipitation]}, {get_wind_force(weather.wind_force, is_foggy, units_input.value)} from {wind_direction[weather.wind_direction]}<br>'
+			markdown_content += f'- *{get_watch_times(watch)}:* {get_subjective_temperature(weather.subjective_temperature[daylight], units_input.value)}, {cloud_precipitation[weather.cloud_precipitation]}, {get_wind_force(weather.wind_force, is_foggy, units_input.value)} from {wind_direction[weather.wind_direction]}{hazard}<br>'
 
 		day_input.value = day_input.value + 1
 
