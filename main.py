@@ -475,7 +475,7 @@ def on_click_generate():
 		index = get_weather_index_start(climate_zone_input.value, season)
 		moon = get_moon_phase(day_input.value)
 
-		markdown_content += f'**{day_input.value} {month_name[month_input.value]} TR {year_input.value} - {get_dawn_string(latitude_input.value, season)}, {get_day_string(latitude_input.value, season)}, {get_dusk_string(latitude_input.value, season)}, {get_night_string(latitude_input.value, season)}, Moon: {get_moon_phase_string(day_input.value)}**<br>'
+		markdown_content += f'**{int(day_input.value)} {month_name[month_input.value]} TR {year_input.value} ({season_name[season]}) - {get_dawn_string(latitude_input.value, season)}, {get_day_string(latitude_input.value, season)}, {get_dusk_string(latitude_input.value, season)}, {get_night_string(latitude_input.value, season)}, Moon: {get_moon_phase_string(day_input.value)}**<br>'
 
 		for watch in range(0, 6, 1):
 			daylight = is_day(latitude_input.value, season, watch * 4)
