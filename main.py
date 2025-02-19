@@ -53,13 +53,13 @@ def get_season_exact(day, month):
 
 moon_phase_name = {
 	0: "🌑︎ New",
-	1: "🌒︎ Waxing crecent",
-	2: "🌓︎ First quater",
-	3: "🌔︎ Waxing bibbous",
+	1: "🌒︎ Waxing crescent",
+	2: "🌓︎ First quarter",
+	3: "🌔︎ Waxing gibbous",
 	4: "🌕︎ Full",
-	5: "🌖︎ Waning crecent",
-	6: "🌗︎ Last quater",
-	7: "🌘︎ Waning bibbous"
+	5: "🌖︎ Waning crescent",
+	6: "🌗︎ Last quarter",
+	7: "🌘︎ Waning gibbous"
 }
 
 def get_moon_phase(day):
