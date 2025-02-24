@@ -1,4 +1,7 @@
 # harn-weather-generator
+
+**NOTE:** Consider this project as deprecated. It is replaced with the obsidian.md plugin https://github.com/marcueberall/obsidian-harn-weather. It is currently in peer review and will hopefully be found in the community plugins within obsidian.md.
+
 A weather generator for the HârnMaster: Roleplaying in the World of Kèthîra rule system.
 
 ## Installation
